@@ -1,0 +1,126 @@
+.page__bd {
+  height: 100vh;
+}
+.tab__hd {
+  position: absolute;
+  z-index: 500;
+  top: 0;
+  width: 100%;
+  background-color: #f7f7fa;
+}
+.weui-tab__panel {
+  padding-top: 3.4rem;
+  background-color: #f7f7fa;
+  display: none;
+}
+.page-show {
+  display: block !important;
+}
+.tab__hd-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 0.7rem 0.75rem;
+}
+.tab-name {
+  font-size: 1.25rem;
+}
+.tab-options {
+  display: flex;
+  font-size: 1.5rem;
+  line-height: 1;
+  height: 2rem;
+  align-items: center;
+}
+.tab-options > div {
+  padding-left: 2rem;
+}
+.weui-cell {
+  background-color: #fff;
+}
+.weui-cell__hd {
+  position: relative;
+  margin-right: 1rem;
+}
+.tab-container .weui-cell__hd > img {
+  display: block;
+  width: 50px;
+}
+.weui-badge {
+  position: absolute;
+  top: -0.4em;
+  right: -0.4em;
+}
+.info-tips {
+  font-size: 13px;
+  color: #888888;
+  vertical-align: center;
+}
+.weui-cell__bd > p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contacts-table > .weui-cells {
+  margin-top: 0 !important;
+}
+.contacts-table .weui-cell__hd > img,
+.contacts-group .weui-cell__hd > img {
+  width: 40px;
+  display: block;
+  border-radius: 5px;
+}
+.weui-cell__hd > div {
+  font-size: 1.5rem;
+  color: rgb(238, 94, 123);
+}
+.profile-wrapper .weui-cell__hd > img {
+  width: 60px;
+}
+.info-tips img {
+  width: 13px;
+  margin-left: 1em;
+}
+.info-tips > span:last-child {
+  line-height: 1;
+}
+.profile-wrapper ~ .weui-cells {
+  margin-top: 0.5rem;
+}
+.weui-tabbar > a > span {
+  display: inline-block;
+  position: relative;
+}
+.num-tip {
+  position: absolute;
+  top: -2px;
+  right: -13px;
+}
+.spot-tip {
+  position: absolute;
+  top: 0;
+  right: -6px;
+}
+.contacts-group-target {
+  position: fixed;
+  top: 3.5rem;
+  bottom: 55px;
+  right: 0.25rem;
+  width: 1rem;
+  z-index: 9999;
+}
+.contacts-group-target ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+ul > li {
+  list-style: none;
+  line-height: 1;
+}
+.contacts-group-target a {
+  color: #888888;
+}
