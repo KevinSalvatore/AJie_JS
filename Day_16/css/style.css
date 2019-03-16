@@ -1,3 +1,6 @@
+* {
+  user-select:none;
+}
 .page__bd {
   height: 100vh;
 }
@@ -123,4 +126,18 @@ ul > li {
 }
 .contacts-group-target a {
   color: #888888;
+}
+#toast {
+  opacity: 0;
+  display: none;
+}
+.weui-toast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.weui-toast-container {
+  font-size: 3rem;
+  font-weight: border;
+  line-height: 1;
 }

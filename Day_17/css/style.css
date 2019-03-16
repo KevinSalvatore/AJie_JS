@@ -1,0 +1,39 @@
+/* svg {
+  stroke: #000;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.text {
+  font-size: 64px;
+  font-weight: bold;
+  text-transform: uppercase;
+  stroke: #3498db;
+  stroke-width: 2px;
+  fill:none;
+  stroke-dasharray: 90 310;
+  animation: stroke 6s infinite linear;
+}
+@keyframes stroke {
+  100% { stroke-dashoffset: -400;}
+}
+.text-2 {
+  stroke: brown;
+  animation-delay: -3s;
+  text-shadow: 0 0 5px blue;
+}
+.text-3 {
+  stroke: green;
+  animation-delay: -4.5s;
+  text-shadow: 0 0 5px blue;
+}.text-4 {
+  stroke: rgb(128, 0, 111);
+  animation-delay: -6s;
+  text-shadow: 0 0 5px blue;
+}

@@ -51,15 +51,37 @@ for (var i = 0; i < 26; i++) {
 targets += "#";
 
 let contactsGroupTarget = document.querySelector(".contacts-group-target>ul");
-
+let weuiToastContainer = document.querySelector(".weui-toast-container");
+let toast = document.getElementById("toast");
 Array.from(targets).forEach(char => {
   let text = document.createTextNode(char);
   let a = document.createElement("a");
   a.appendChild(text);
+  a.setAttribute("href","#group-"+char.toUpperCase());
   let target = document.createElement("li");
   target.appendChild(a);
   target.addEventListener("click", () => {
     let text = target.firstChild.textContent;
+    let textNode = document.createTextNode(text);
+    if (weuiToastContainer.hasChildNodes())
+      weuiToastContainer.replaceChild(textNode, weuiToastContainer.firstChild);
+    weuiToastContainer.appendChild(textNode);
+    toast.style.opacity = 1;
+    toast.style.display = "block";
+    setTimeout(() => {
+      toast.style.opacity = 0;
+      toast.style.display = "nobe";
+    }, 500);
   });
   contactsGroupTarget.appendChild(target);
 });
+
+let contactsGroups = document.querySelectorAll(".contacts-group");
+let weuiCellsTitle = document.querySelectorAll(".weui-cells__title");
+for (let index = 0; index < contactsGroups.length; index++) {
+  const element = contactsGroups[index];
+  let attribute = element.getAttribute("id");
+  let title = attribute.charAt(attribute.length - 1);
+  let titleNode = document.createTextNode(title);
+  weuiCellsTitle[index].appendChild(titleNode);
+}
