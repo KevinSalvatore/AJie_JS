@@ -5,6 +5,6 @@
 		}
 	],
 	"settings": {
-		"svg.preview.background": "custom"
+		"svg.preview.background": "transparent"
 	}
 }

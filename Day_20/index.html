@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500">
+      <defs>
+        <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="rgb(98, 180, 76)" />
+          <stop offset="20%" stop-color="rgb(242, 179, 61)" />
+          <stop offset="40%" stop-color="rgb(238, 125, 55)" />
+          <stop offset="60%" stop-color="rgb(205, 58, 71)" />
+          <stop offset="80%" stop-color="rgb(142, 61, 140)" />
+          <stop offset="100%" stop-color="rgb(39, 155, 213)" />
+        </linearGradient>
+      </defs>
+      <path
+        stroke-linecap="round"
+        fill="none"
+        stroke-width="10"
+        stroke="url(#linear)"
+        d="
+      M 197,148
+      A 87,87,0,0,0,79,214
+      A 282,282,0,0,0,148,438
+      A 54,54,0,0,0,212,448
+      A 87,87,0,0,1,288,448
+      A 54,54,0,0,0,352,438
+      A 282,282,0,0,0,407,350
+      A 87,87,0,0,1,413,189
+      A 87,87,0,0,0,303,148
+      A 141,141,0,0,1,197,148
+      Z
+      "
+      />
+      <path
+        stroke-linecap="round"
+        fill="none"
+        stroke="url(#linear)"
+        stroke-width="10"
+        d="
+      M 237,141
+      A 87,87,0,0,0,314,64
+      A 87,87,0,0,0,237,141
+      "
+      />
+    </svg>
+    <script src="js/index.js"></script>
+  </body>
+</html>

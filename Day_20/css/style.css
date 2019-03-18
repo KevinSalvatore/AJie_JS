@@ -1,0 +1,16 @@
+path {
+  animation: dash 3s linear forwards;
+}
+path:nth-child(2) {
+  stroke-dasharray: 1162;
+  stroke-dashoffset: -1162;
+}
+path:nth-child(3){
+  stroke-dasharray: 236;
+  stroke-dashoffset: -236;
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
