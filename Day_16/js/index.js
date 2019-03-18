@@ -1,3 +1,6 @@
+/**
+ * 换页功能
+ */
 const tabbars = document.querySelectorAll(".weui-tabbar__item");
 const pages = document.querySelectorAll(".weui-tab__panel");
 let tabName = document.querySelector(".tab-name>p");
@@ -44,6 +47,9 @@ for (let index = 0; index < tabbars.length; index++) {
     }
   });
 }
+/**
+ * Contacts页面侧边栏制作
+ */
 let targets = "↑☆";
 for (var i = 0; i < 26; i++) {
   targets += String.fromCharCode(65 + i);
@@ -57,7 +63,7 @@ Array.from(targets).forEach(char => {
   let text = document.createTextNode(char);
   let a = document.createElement("a");
   a.appendChild(text);
-  a.setAttribute("href","#group-"+char.toUpperCase());
+  a.setAttribute("href", "#group-" + char.toUpperCase());
   let target = document.createElement("li");
   target.appendChild(a);
   target.addEventListener("click", () => {
@@ -70,12 +76,14 @@ Array.from(targets).forEach(char => {
     toast.style.display = "block";
     setTimeout(() => {
       toast.style.opacity = 0;
-      toast.style.display = "nobe";
+      toast.style.display = "none";
     }, 500);
   });
   contactsGroupTarget.appendChild(target);
 });
-
+/**
+ * 通过contacts-group的id属性为weui-cells__title设置title
+ */
 let contactsGroups = document.querySelectorAll(".contacts-group");
 let weuiCellsTitle = document.querySelectorAll(".weui-cells__title");
 for (let index = 0; index < contactsGroups.length; index++) {
@@ -85,3 +93,27 @@ for (let index = 0; index < contactsGroups.length; index++) {
   let titleNode = document.createTextNode(title);
   weuiCellsTitle[index].appendChild(titleNode);
 }
+/**
+ * welcome界面控制
+ */
+let welcome = document.querySelector(".welcome");
+setTimeout(() => {
+  welcome.style.opacity = "0";
+  // welcome.style.display = "none";
+  disappear(welcome);
+}, 2000);
+
+let disappear = obj => {
+  setTimeout(() => {
+    obj.style.display = "none";
+  }, 500);
+};
+/**
+ * 
+ */
+
+
+ /**
+  * 
+  */
+ 

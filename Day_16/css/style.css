@@ -1,5 +1,63 @@
 * {
-  user-select:none;
+  user-select: none;
+}
+.welcome {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  transition: all .5s ease;
+  z-index: 9999;
+}
+.welcome__bd {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#logo-pic {
+  width: 75px;
+  height: 75px;
+}
+.logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  fill: none;
+  stroke-width: 1px;
+  stroke-dasharray: 30% 70%;
+  animation: stroke 4.5s infinite linear;
+}
+.logo-name-text-1 {
+  stroke: rgb(0, 169, 86);
+}
+.logo-name-text-2 {
+  stroke: rgb(0, 127, 129);
+  animation-delay: -1.5s;
+}
+.logo-name-text-3 {
+  stroke: rgb(0, 86, 168);
+  animation-delay: -3s;
+}
+@keyframes stroke {
+  to {
+    stroke-dashoffset: -100%;
+  }
+}
+.welcome__bd > p {
+  font-size: 0.75em;
+  color: #888888;
+  text-align: center;
 }
 .page__bd {
   height: 100vh;
