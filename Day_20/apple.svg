@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500">
-    <path fill="none" stroke="rgb(0,0,0)" stroke-width="1" d="
+    <path fill="none" stroke="rgb(0,0,0)" stroke-width="10" d="
   M 197,148
   A 87,87,0,0,0,79,214
   A 282,282,0,0,0,148,438
@@ -12,9 +12,10 @@
   A 141,141,0,0,1,197,148
   Z
   "/>
-  <path fill="none" stroke="rgb(0,0,0)" stroke-width="1" d="
+  <path fill="none" stroke="rgb(0,0,0)" stroke-width="10" d="
   M 237,141
   A 87,87,0,0,0,314,64
   A 87,87,0,0,0,237,141
+  Z
   " />
 </svg>
