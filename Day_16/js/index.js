@@ -99,21 +99,95 @@ for (let index = 0; index < contactsGroups.length; index++) {
 let welcome = document.querySelector(".welcome");
 setTimeout(() => {
   welcome.style.opacity = "0";
-  // welcome.style.display = "none";
   disappear(welcome);
 }, 2000);
-
 let disappear = obj => {
   setTimeout(() => {
     obj.style.display = "none";
   }, 500);
 };
 /**
- *
+ *聊天界面始终保持在底部
  */
-
- 
-
+let chatPage = document.querySelector("#chat-page .weui-tab__panel");
+let scrollBtnChatPage = () => {
+  chatPage.scrollTop = chatPage.scrollHeight;
+};
+let chatInput = document.querySelectorAll(".chat-input");
+chatInput.forEach(ele => {
+  ele.addEventListener("focus", () => {
+    scrollBtnChatPage();
+  });
+});
 /**
+ *语音按钮，表情包按钮
  *
  */
+let inputWaySelectBtn = document.querySelector("#input-way-select");
+let chatInputBox = document.querySelectorAll(".chat-input");
+let messageInput;
+let inputWaySelectBtnClick = () => {
+  inputWaySelectBtn.children[0].classList.toggle("ion-md-mic");
+  inputWaySelectBtn.children[0].classList.toggle("ion-md-code-working");
+  if (chatInputBox[1].classList.contains("page-show")) {
+    messageInput = chatInputBox[1].innerHTML;
+    chatInputBox[1].innerHTML = "";
+  }
+  chatInputBox.forEach(ele => {
+    ele.classList.toggle("page-show");
+  });
+  if (chatInputBox[1].classList.contains("page-show")) {
+    chatInputBox[1].innerHTML = messageInput;
+  }
+};
+let inputEmoji = document.querySelector("#input-emoji");
+let inputEmojiClick = ()=>{
+  inputEmoji.children[0].classList.toggle("ion-md-happy");
+  inputEmoji.children[0].classList.toggle("ion-md-code-working");
+}
+
+inputWaySelectBtn.addEventListener("click", () => {
+  inputWaySelectBtnClick();
+  if(inputEmoji.children[0].classList.contains("ion-md-code-working")){
+    inputEmojiClick();
+  }
+});
+inputEmoji.addEventListener("click", () => {
+  if(inputEmoji.children[0].classList.contains("ion-md-happy")){
+    // 表情框跳出
+  }
+  inputEmojiClick();
+  if (chatInputBox[0].classList.contains("page-show")) {
+    inputWaySelectBtnClick();
+  }
+});
+/**
+ *语音按压
+ */
+chatInputBox[0].addEventListener("mousedown", () => {
+  chatInputBox[0].style.backgroundColor = "rgb(222, 222, 222)";
+});
+chatInputBox[0].addEventListener("mouseup", () => {
+  chatInputBox[0].style.backgroundColor = "#fff";
+});
+chatInputBox[0].addEventListener("touchstart", () => {
+  chatInputBox[0].style.backgroundColor = "rgb(222, 222, 222)";
+});
+chatInputBox[0].addEventListener("touchend", () => {
+  chatInputBox[0].style.backgroundColor = "#fff";
+});
+/**
+ *通过检测输入框的高度，动态的改变panel的paddingBtm
+ */
+let heightBef = 40;
+let heightAft = chatInputBox[1].offsetHeight;
+let panelPadding = 50;
+chatInputBox[1].addEventListener("DOMSubtreeModified", () => {
+  heightAft = chatInputBox[1].offsetHeight;
+  if (heightAft !== heightBef) {
+    panelPadding += heightAft - heightBef;
+    chatPage.style.paddingBottom = panelPadding + "px";
+    scrollBtnChatPage();
+    heightBef = heightAft;
+  }
+});
