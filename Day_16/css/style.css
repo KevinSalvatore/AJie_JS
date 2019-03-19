@@ -186,6 +186,10 @@
   max-height: 6rem;
   overflow: hidden;
 }
+.chat-input embed {
+  width: 2rem;
+  vertical-align: middle;
+}
 .num-tip {
   position: absolute;
   top: -2px;
@@ -231,4 +235,14 @@ ul > li {
   font-size: 3rem;
   font-weight: border;
   line-height: 1;
+}
+.chat-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  background-image: url(../images/chat-bg.jpg);
+  background-size: cover;
+  background-position: center center;
 }
