@@ -13,7 +13,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   z-index: 9999;
 }
 .welcome__bd {
@@ -59,7 +59,7 @@
   color: #888888;
   text-align: center;
 }
-.page__bd {
+.page {
   height: 100vh;
 }
 .tab__hd {
@@ -86,6 +86,12 @@
 }
 .tab-name {
   font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+.tab-name > div {
+  margin-right: 1rem;
+  /* line-height: 1; */
 }
 .tab-options {
   display: flex;
@@ -152,6 +158,33 @@
 .weui-tabbar > a > span {
   display: inline-block;
   position: relative;
+}
+.weui-tabbar {
+  min-height: 53px;
+}
+.input-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 0.375rem 7px;
+  display: flex;
+  align-items: flex-end;
+}
+.input-wrapper > div {
+  margin: 0 0.375rem;
+}
+.input-wrapper i {
+  font-size: 25px;
+}
+.chat-input {
+  width: 0;
+  flex: 1;
+  background-color: #fff;
+  outline: 0;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  padding: 0.25rem 0.5rem;
+  max-height: 6rem;
+  overflow: hidden;
 }
 .num-tip {
   position: absolute;

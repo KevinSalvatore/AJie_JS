@@ -1,0 +1,44 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a {
+  text-decoration: none;
+  color: #42bd56;
+}
+body {
+  margin: 0;
+  color: #111111;
+  font-size: 12px;
+  font-family: "apple-system", serif;
+  position: relative;
+}
+.feed-item {
+  display: block;
+  padding: 25px 18px 25px 0;
+  margin-left: 18px;
+  position: relative;
+  color: #494949;
+}
+.feed-content {
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.feed-content h3 {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.41;
+  color: #494949;
+  margin-bottom: 6px;
+}
+.feed-content p {
+  font-size: 10px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+}
+.author {
+  font-size: 12px;
+  color: #cccccc;
+}
