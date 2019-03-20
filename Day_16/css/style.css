@@ -334,23 +334,24 @@ ul > li {
 .chat-tools {
   position: fixed;
   /* top: 100%; */
-  top: 0;
+  top: 10px;
   left: 0;
   right: 0;
-  /* background-color: rgb(247, 247, 247); */
-background-color: lightblue;
+  background-color: rgb(247, 247, 247);
 }
 .emoji-pages-tabbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
   line-height: 1;
+  position: relative;
 }
 #emoji-page-choose {
   flex: 1;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 #emoji-page-choose > div {
   flex: 0;
@@ -361,8 +362,8 @@ background-color: lightblue;
   height: 1.5rem;
   border-left: 0.5px solid rgb(222, 222, 222);
   border-right: 0.5px solid rgb(222, 222, 222);
-  margin: .75rem 0;
-  padding: 0 .75rem;
+  margin: 0.75rem 0;
+  padding: 0 0.75rem;
   background-color: transparent;
 }
 #emoji-plus,
@@ -370,7 +371,7 @@ background-color: lightblue;
   height: 3rem;
 }
 #emoji-plus > div,
-#emoji-setting > div{
+#emoji-setting > div {
   width: 1.5rem;
   height: 1.5rem;
   padding: 0 0.75rem;
@@ -381,6 +382,50 @@ background-color: lightblue;
 #emoji-plus > div {
   border-right: 0.5px solid rgb(222, 222, 222);
 }
-#emoji-setting > div{
+#emoji-setting > div {
   border-left: 0.5px solid rgb(222, 222, 222);
+}
+.tools-container {
+  height: 13rem;
+}
+.emoji-tip {
+  height: 2rem;
+}
+.swiper-container {
+  height: 11rem;
+}
+.emoji-table .swiper-slide {
+  display: flex;
+  align-items: center;
+  align-content: space-around;
+  flex-wrap: wrap;
+}
+.emoji-cell {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.emoji-cell > div {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  background-image: url(../images/表情.png);
+  background-size: contain;
+  background-position: center center;
+}
+.chat-tools::before,
+.emoji-pages-tabbar::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #c0bfc4;
+  color: #c0bfc4;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
 }

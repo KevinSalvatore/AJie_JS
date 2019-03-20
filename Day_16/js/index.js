@@ -1,12 +1,12 @@
 /**
  * 换页功能
  */
-const tabbars = document.querySelectorAll(".weui-tabbar__item");
-const pages = document.querySelectorAll(".weui-tab__panel");
-let tabName = document.querySelector(".tab-name>p");
-let tabSearch = document.querySelector(".tab-search");
-let tabMoreIcon = document.querySelector(".tab-more>i");
-let tabHd = document.querySelector(".tab__hd");
+const tabbars = document.querySelectorAll("#main-page .weui-tabbar__item");
+const pages = document.querySelectorAll("#main-page .weui-tab__panel");
+let tabName = document.querySelector("#main-page .tab-name>p");
+let tabSearch = document.querySelector("#main-page .tab-search");
+let tabMoreIcon = document.querySelector("#main-page .tab-more>i");
+let tabHd = document.querySelector("#main-page .tab__hd");
 for (let index = 0; index < tabbars.length; index++) {
   const obj = tabbars[index];
   obj.addEventListener("click", () => {
@@ -194,3 +194,26 @@ chatInputBox[1].addEventListener("DOMSubtreeModified", () => {
 /**
  *
  */
+var swiperH = new Swiper("#emoji-pages");
+var swiperV = new Swiper(".emoji-table", {
+  direction: "vertical"
+});
+
+/**
+ *
+ */
+let emojiCells = document.querySelectorAll(".emoji-cell > div");
+emojiCells.forEach(element => {
+  element.addEventListener("mousedown", () => {
+    element.style.backgroundColor = "rgb(222, 222, 222)";
+  });
+  element.addEventListener("mouseup", () => {
+    element.style.backgroundColor = "rgb(247, 247, 247)";
+  });
+  element.addEventListener("touchstart", () => {
+    element.style.backgroundColor = "rgb(222, 222, 222)";
+  });
+  element.addEventListener("touchend", () => {
+    element.style.backgroundColor = "rgb(247, 247, 247)";
+  });
+});
