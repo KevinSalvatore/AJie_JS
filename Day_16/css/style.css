@@ -332,12 +332,55 @@ ul > li {
   min-width: 2rem;
 }
 .chat-tools {
-  position: absolute;
+  position: fixed;
   /* top: 100%; */
   top: 0;
   left: 0;
   right: 0;
-  padding: 0.75rem 0.75rem 0;
-  border: 1px red solid;
-  background-color: rgb(247, 247, 247);
+  /* background-color: rgb(247, 247, 247); */
+background-color: lightblue;
+}
+.emoji-pages-tabbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  line-height: 1;
+}
+#emoji-page-choose {
+  flex: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+}
+#emoji-page-choose > div {
+  flex: 0;
+  height: 3rem;
+}
+#emoji-page-choose embed {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-left: 0.5px solid rgb(222, 222, 222);
+  border-right: 0.5px solid rgb(222, 222, 222);
+  margin: .75rem 0;
+  padding: 0 .75rem;
+  background-color: transparent;
+}
+#emoji-plus,
+#emoji-setting {
+  height: 3rem;
+}
+#emoji-plus > div,
+#emoji-setting > div{
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.75rem;
+  margin: 0.75rem 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+#emoji-plus > div {
+  border-right: 0.5px solid rgb(222, 222, 222);
+}
+#emoji-setting > div{
+  border-left: 0.5px solid rgb(222, 222, 222);
 }

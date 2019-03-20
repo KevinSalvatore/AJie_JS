@@ -141,19 +141,19 @@ let inputWaySelectBtnClick = () => {
   }
 };
 let inputEmoji = document.querySelector("#input-emoji");
-let inputEmojiClick = ()=>{
+let inputEmojiClick = () => {
   inputEmoji.children[0].classList.toggle("ion-md-happy");
   inputEmoji.children[0].classList.toggle("ion-md-code-working");
-}
+};
 
 inputWaySelectBtn.addEventListener("click", () => {
   inputWaySelectBtnClick();
-  if(inputEmoji.children[0].classList.contains("ion-md-code-working")){
+  if (inputEmoji.children[0].classList.contains("ion-md-code-working")) {
     inputEmojiClick();
   }
 });
 inputEmoji.addEventListener("click", () => {
-  if(inputEmoji.children[0].classList.contains("ion-md-happy")){
+  if (inputEmoji.children[0].classList.contains("ion-md-happy")) {
     // 表情框跳出
   }
   inputEmojiClick();
@@ -191,3 +191,6 @@ chatInputBox[1].addEventListener("DOMSubtreeModified", () => {
     heightBef = heightAft;
   }
 });
+/**
+ *
+ */
