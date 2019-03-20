@@ -1,64 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-       <meta charset="UTF-8" />
-       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-       <title>Document</title>
-       <link href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css"; rel="stylesheet">
-       <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js";></script>
-       <script src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js";></script>
-       <style type="text/css">
-         *{
-           margin: 0;
-           padding: 0;
-         }
-             .swiper-container{
-               position: fixed;
-               height: 100%;
-               width: 100%;
-               background: #EEEEEE;
-             }
-             .slide2 .swiper-slide{
-               background: #2AC3CB;
-             }
-       </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 <body>
-<div class="swiper-container swiper-container-father">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide slide1">slider1</div>
-    <div class="swiper-slide slide2">
-      <div class="swiper-container swiper-container-son">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">2.1</div>
-          <div class="swiper-slide">2.2</div>
-          <div class="swiper-slide">2.3 </div>
-        </div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-    <div class="swiper-slide slide3"> slider3</div>
-  </div>
-</div>
-<script>
-  var swiperIndex = sessionStorage.getItem('swiperIndex') ? sessionStorage.getItem('swiperIndex') : 0,
-      initSwiper = {
-        direction: 'vertical',
-        initialSlide : swiperIndex,
-        prevButton: '.pre-page-btn',
-        nextButton: '.next-page-btn',
-        // 切换页面成功之前的回调
-        onSlideChangeStart: function (swiper) {
-          sessionStorage.setItem('swiperIndex', swiper.activeIndex);
-        }
-      };
-  var swiperFather = new Swiper('.swiper-container-father', initSwiper);
-  var swiperSon = new Swiper('.swiper-container-son',{
-    prevButton: '.swiper-button-prev',
-    nextButton: '.swiper-button-next',
-  });
-</script>
+  <script src="./js/index.js"></script>
 </body>
 </html>

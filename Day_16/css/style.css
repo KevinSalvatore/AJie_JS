@@ -406,6 +406,11 @@ ul > li {
   flex-direction: column;
   align-items: center;
 }
+.face-cell {
+  width: 14%;
+  display: flex;
+  justify-content: center;
+}
 .emoji-cell > div {
   width: 60px;
   height: 60px;
@@ -414,6 +419,16 @@ ul > li {
   background-size: contain;
   background-position: center center;
 }
+.face-cell > div {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.face-cell  embed {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .chat-tools::before,
 .emoji-pages-tabbar::before {
   content: " ";

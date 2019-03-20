@@ -192,13 +192,12 @@ chatInputBox[1].addEventListener("DOMSubtreeModified", () => {
   }
 });
 /**
- *
+ *创建Swiper
  */
 var swiperH = new Swiper("#emoji-pages");
 var swiperV = new Swiper(".emoji-table", {
   direction: "vertical"
 });
-
 /**
  *
  */
