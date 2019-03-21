@@ -113,8 +113,8 @@ let chatPage = document.querySelector("#chat-page .weui-tab__panel");
 let scrollBtnChatPage = () => {
   chatPage.scrollTop = chatPage.scrollHeight;
 };
-let chatInput = document.querySelectorAll(".chat-input");
-chatInput.forEach(ele => {
+let chatInputBox = document.querySelectorAll(".chat-input");
+chatInputBox.forEach(ele => {
   ele.addEventListener("focus", () => {
     scrollBtnChatPage();
   });
@@ -124,7 +124,6 @@ chatInput.forEach(ele => {
  *
  */
 let inputWaySelectBtn = document.querySelector("#input-way-select");
-let chatInputBox = document.querySelectorAll(".chat-input");
 let messageInput;
 let inputWaySelectBtnClick = () => {
   inputWaySelectBtn.children[0].classList.toggle("ion-md-mic");
@@ -192,6 +191,140 @@ chatInputBox[1].addEventListener("DOMSubtreeModified", () => {
   }
 });
 /**
+ *创建表情包对象
+ */
+const bqb = [
+  {
+    name: "cuetEmoji",
+    emojiAmount: 50,
+    big: false
+  },
+  {
+    name: "cartoon",
+    emojiAmount: 30,
+    big: true
+  },
+  {
+    name: "location",
+    emojiAmount: 28,
+    big: true
+  }
+];
+/**
+ * 点击功能函数
+ */
+let borderEffect = element => {
+  element.addEventListener("mousedown", () => {
+    element.style.border = "1px solid rgb(64, 79, 125)";
+  });
+  element.addEventListener("mouseup", () => {
+    element.style.border = "0";
+  });
+  element.addEventListener("touchstart", () => {
+    element.style.border = "1px solid rgb(64, 79, 125)";
+  });
+  element.addEventListener("touchend", () => {
+    element.style.border = "0";
+  });
+};
+/**
+ * 添加表情页面
+ */
+let createEmojiPages = emojiObj => {
+  let containerAmount = emojiObj.big ? 8 : 20;
+  let cellType = emojiObj.big ? "emoji-cell" : "face-cell";
+  let pageAmount = Math.ceil(emojiObj.emojiAmount / containerAmount);
+  let des = "#" + emojiObj.name + "-table .swiper-wrapper";
+  let emojiWrapper = document.querySelector(des);
+  let pointer = 1;
+  for (let i = 0; i < pageAmount; i++) {
+    let emojiSwiperSlide = document.createElement("div");
+    emojiSwiperSlide.classList.add("swiper-slide");
+    for (let i = 0; i < containerAmount; i++) {
+      if (pointer > emojiObj.emojiAmount) break;
+      let masking = document.createElement("div");
+      masking.classList.add("masking");
+      let path =
+        "./svg/" +
+        emojiObj.name +
+        "/" +
+        emojiObj.name +
+        " (" +
+        pointer++ +
+        ").svg";
+      let embed = document.createElement("embed");
+      embed.setAttribute("src", path);
+      embed.setAttribute("type", "image/svg+xml");
+      let divContainer = document.createElement("div");
+      divContainer.appendChild(masking);
+      divContainer.appendChild(embed);
+      if (!emojiObj.big) {
+        masking.addEventListener("click", () => {
+          let tmpNode = masking.nextSibling.cloneNode(true);
+          chatInputBox[1].appendChild(tmpNode);
+        });
+      }
+      let cell = document.createElement("div");
+      cell.classList.add(cellType);
+      cell.appendChild(divContainer);
+      emojiSwiperSlide.appendChild(cell);
+    }
+    if (!emojiObj.big) {
+      let masking = document.createElement("div");
+      masking.classList.add("masking");
+      let embed = document.createElement("embed");
+      embed.setAttribute("src", "./svg/tool-icon/tool-icon_backspace.svg");
+      embed.setAttribute("type", "image/svg+xml");
+      let divContainer = document.createElement("div");
+      divContainer.appendChild(masking);
+      divContainer.appendChild(embed);
+      let faceCell = document.createElement("div");
+      faceCell.classList.add("face-cell");
+      faceCell.appendChild(divContainer);
+      emojiSwiperSlide.appendChild(faceCell);
+    }
+    emojiWrapper.appendChild(emojiSwiperSlide);
+  }
+};
+/**
+ * 创建表情选择Bar
+ */
+let createEmojiBar = name => {
+  let maskingDiv = document.createElement("div");
+  maskingDiv.classList.add("masking");
+  let embed = document.createElement("embed");
+  embed.setAttribute("src", "./svg/tool-icon/tool-icon_" + name + ".svg");
+  embed.setAttribute("type", "image/svg+xml");
+  let div = document.createElement("div");
+  div.appendChild(maskingDiv);
+  div.appendChild(embed);
+  return div;
+};
+/**
+ * 创建整个表情Div
+ */
+let createEmoji = emojiObjs => {
+  let emojiPages = document.querySelector("#emoji-pages > .swiper-wrapper");
+  let emojiPageChooseBar = document.querySelector("#emoji-page-choose");
+  for (let i = 0; i < emojiObjs.length; i++) {
+    const element = emojiObjs[i];
+    let divSW = document.createElement("div");
+    divSW.classList.add("swiper-wrapper");
+    let divPageTable = document.createElement("div");
+    divPageTable.setAttribute("id", element.name + "-table");
+    divPageTable.classList.add("swiper-container", "emoji-table");
+    divPageTable.appendChild(divSW);
+    let divSS = document.createElement("div");
+    divSS.classList.add("swiper-slide");
+    divSS.appendChild(divPageTable);
+    emojiPages.appendChild(divSS);
+    createEmojiPages(element);
+    emojiPageChooseBar.appendChild(createEmojiBar(element.name));
+  }
+};
+//调用创建表情包
+createEmoji(bqb);
+/**
  *创建Swiper
  */
 var swiperH = new Swiper("#emoji-pages");
@@ -199,20 +332,21 @@ var swiperV = new Swiper(".emoji-table", {
   direction: "vertical"
 });
 /**
- *
+ * 添加表情Bar点击跳转功能
  */
-let emojiCells = document.querySelectorAll(".emoji-cell > div");
-emojiCells.forEach(element => {
-  element.addEventListener("mousedown", () => {
-    element.style.backgroundColor = "rgb(222, 222, 222)";
-  });
-  element.addEventListener("mouseup", () => {
-    element.style.backgroundColor = "rgb(247, 247, 247)";
-  });
-  element.addEventListener("touchstart", () => {
-    element.style.backgroundColor = "rgb(222, 222, 222)";
-  });
-  element.addEventListener("touchend", () => {
-    element.style.backgroundColor = "rgb(247, 247, 247)";
-  });
+let emojiPageChooseBar = document.querySelectorAll(
+  "#emoji-page-choose .masking"
+);
+for (let i = 0; i < emojiPageChooseBar.length; i++) {
+  const element = emojiPageChooseBar[i];
+  element.onclick = () => {
+    swiperH.slideTo(i, 1000, false);
+  };
+}
+/**
+ * 添加表情点击效果
+ */
+let maskingDiv = document.querySelectorAll(".masking");
+maskingDiv.forEach(element => {
+  borderEffect(element);
 });

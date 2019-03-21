@@ -121,7 +121,7 @@
 .info-tips {
   font-size: 13px;
   color: #888888;
-  vertical-align: center;
+  vertical-align: middle;
 }
 .weui-cell__bd > p {
   display: flex;
@@ -194,6 +194,7 @@
 .chat-input embed,
 .message-content embed {
   width: 1.5rem;
+  margin: 0 0.2rem;
   vertical-align: middle;
 }
 .num-tip {
@@ -356,6 +357,16 @@ ul > li {
 #emoji-page-choose > div {
   flex: 0;
   height: 3rem;
+  position: relative;
+}
+.masking {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+  z-index: 99;
 }
 #emoji-page-choose embed {
   width: 1.5rem;
@@ -411,24 +422,21 @@ ul > li {
   display: flex;
   justify-content: center;
 }
-.emoji-cell > div {
+.emoji-cell > div,
+.face-cell > div {
+  position: relative;
+  padding: .2rem;
+}
+.emoji-cell > div,
+.emoji-cell embed {
   width: 60px;
   height: 60px;
-  border-radius: 5px;
-  background-image: url(../images/表情.png);
-  background-size: contain;
-  background-position: center center;
 }
-.face-cell > div {
+.face-cell > div,
+.face-cell embed {
   width: 1.5rem;
   height: 1.5rem;
 }
-
-.face-cell  embed {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
 .chat-tools::before,
 .emoji-pages-tabbar::before {
   content: " ";
