@@ -166,13 +166,21 @@
   width: 100%;
   padding: 6px 0.375rem 7px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 .input-wrapper > div {
   margin: 0 0.375rem;
 }
 .input-wrapper i {
   font-size: 25px;
+}
+.send-btn{
+  padding: 0.2rem;
+  border-radius: 5px;
+  background-color: rgb(59, 197, 71);
+  color: #fff;
+  font-weight: lighter;
+  display: none;
 }
 .chat-input {
   width: 0;
@@ -184,7 +192,9 @@
   padding: 0.25rem 0.5rem;
   min-height: 2rem;
   max-height: 6rem;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   display: none;
 }
 .chat-input > p {
@@ -353,6 +363,7 @@ ul > li {
   flex-wrap: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 #emoji-page-choose > div {
   flex: 0;

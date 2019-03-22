@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" version="1.1">
+    <circle cx="0" cy="50" r="15" fill="blue" stroke="black" stroke-width="1">
+        <animate attributeName="cx" dur="5s" from="0" repeatCount="indefinite" to="100"/>
+    </circle>
+    <polygon fill="#fcc" stroke="black" points="30 30 70 30 90 70 10 70">
+        <animate attributeName="points" attributeType="XML" to="50 30 70 50 50 90 30 50
+" dur="3s" fill="freeze">
+    <polygon/>
+</svg>

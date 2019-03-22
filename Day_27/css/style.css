@@ -1,0 +1,12 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.page {
+  background-color: red;
+  min-height: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}

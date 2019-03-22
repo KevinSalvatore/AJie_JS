@@ -350,3 +350,32 @@ let maskingDiv = document.querySelectorAll(".masking");
 maskingDiv.forEach(element => {
   borderEffect(element);
 });
+/**
+ * 判断文本框是否有内容
+ */
+
+/**
+ * 在光标指定位置插入表情
+ */
+/**
+ * 发送消息功能函数
+ */
+let sendMessage = content => {};
+/**
+ * 发送大表情功能
+ * 需要克隆节点
+ */
+
+/**
+ * 发送输入框内容
+ * 不需要克隆节点
+ * 直接引用拿走
+ */
+
+/**
+ * 发送按钮功能实现
+ */
+
+/**
+ * tool组件弹出功能
+ */
