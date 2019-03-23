@@ -121,7 +121,6 @@ chatInputBox.forEach(ele => {
 });
 /**
  *语音按钮，表情包按钮
- *
  */
 let inputWaySelectBtn = document.querySelector("#input-way-select");
 let messageInput;
@@ -146,18 +145,19 @@ let inputEmojiClick = () => {
 };
 
 inputWaySelectBtn.addEventListener("click", () => {
-  inputWaySelectBtnClick();
   if (inputEmoji.children[0].classList.contains("ion-md-code-working")) {
     inputEmojiClick();
   }
+  inputWaySelectBtnClick();
 });
 inputEmoji.addEventListener("click", () => {
-  if (inputEmoji.children[0].classList.contains("ion-md-happy")) {
-    // 表情框跳出
-  }
   inputEmojiClick();
   if (chatInputBox[0].classList.contains("page-show")) {
     inputWaySelectBtnClick();
+  }
+  if (inputEmoji.children[0].classList.contains("ion-md-code-working")) {
+    placeCaretAtEnd(chatInputBox[1]);
+    // 表情框跳出
   }
 });
 /**
@@ -178,6 +178,7 @@ chatInputBox[0].addEventListener("touchend", () => {
 /**
  *通过检测输入框的高度，动态的改变panel的paddingBtm
  */
+let hasContentFlag = true;
 let heightBef = 40;
 let heightAft = chatInputBox[1].offsetHeight;
 let panelPadding = 50;
@@ -188,6 +189,10 @@ chatInputBox[1].addEventListener("DOMSubtreeModified", () => {
     chatPage.style.paddingBottom = panelPadding + "px";
     scrollBtnChatPage();
     heightBef = heightAft;
+  }
+  if (chatInputBox[1].hasChildNodes() === hasContentFlag) {
+    changeSendBtn();
+    hasContentFlag = !hasContentFlag;
   }
 });
 /**
@@ -255,13 +260,23 @@ let createEmojiPages = emojiObj => {
       let embed = document.createElement("embed");
       embed.setAttribute("src", path);
       embed.setAttribute("type", "image/svg+xml");
+      if (emojiObj.big) {
+        embed.classList.add("large");
+      } else {
+        embed.classList.add("small");
+      }
       let divContainer = document.createElement("div");
       divContainer.appendChild(masking);
       divContainer.appendChild(embed);
-      if (!emojiObj.big) {
+      if (emojiObj.big) {
         masking.addEventListener("click", () => {
-          let tmpNode = masking.nextSibling.cloneNode(true);
-          chatInputBox[1].appendChild(tmpNode);
+          message(false, masking.nextSibling.outerHTML);
+          scrollBtnChatPage();
+        });
+      } else {
+        masking.addEventListener("click", () => {
+          chatInputBox[1].focus();
+          insertHtmlAtCaret(masking.nextSibling.outerHTML);
         });
       }
       let cell = document.createElement("div");
@@ -295,6 +310,7 @@ let createEmojiBar = name => {
   let embed = document.createElement("embed");
   embed.setAttribute("src", "./svg/tool-icon/tool-icon_" + name + ".svg");
   embed.setAttribute("type", "image/svg+xml");
+  embed.classList.add("small");
   let div = document.createElement("div");
   div.appendChild(maskingDiv);
   div.appendChild(embed);
@@ -350,32 +366,97 @@ let maskingDiv = document.querySelectorAll(".masking");
 maskingDiv.forEach(element => {
   borderEffect(element);
 });
-/**
- * 判断文本框是否有内容
- */
 
 /**
- * 在光标指定位置插入表情
+ * 在光标处插入节点
  */
+function insertHtmlAtCaret(html) {
+  let sel, range;
+  sel = window.getSelection();
+  if (sel.getRangeAt && sel.rangeCount) {
+    range = sel.getRangeAt(0);
+    range.deleteContents();
+    let el = document.createElement("div");
+    el.innerHTML = html;
+    let frag = document.createDocumentFragment(),
+      node,
+      lastNode;
+    while ((node = el.firstChild)) {
+      lastNode = frag.appendChild(node);
+    }
+    range.insertNode(frag);
+    if (lastNode) {
+      range = range.cloneRange();
+      range.setStartAfter(lastNode);
+      range.collapse(true);
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+  }
+}
+
+/**
+ * 发送按钮样式变化
+ */
+let firstTimeAdd = true;
+let sendToolBar = document.getElementById("send-tool-bar");
+function changeSendBtn() {
+  for (let i = 0; i < sendToolBar.children.length; i++) {
+    const element = sendToolBar.children[i];
+    element.classList.toggle("displayNone");
+    if (
+      !sendToolBar.children[0].classList.contains("displayNone") &&
+      firstTimeAdd
+    ) {
+      sendToolBar.children[0].addEventListener("click", () => {
+        message(false, chatInputBox[1].innerHTML);
+        scrollBtnChatPage();
+        chatInputBox[1].innerHTML = null;
+      });
+      firstTimeAdd = !firstTimeAdd;
+    }
+  }
+}
+
 /**
  * 发送消息功能函数
  */
-let sendMessage = content => {};
-/**
- * 发送大表情功能
- * 需要克隆节点
- */
+var chatContainer = document.querySelector(".chat-container");
 
 /**
- * 发送输入框内容
- * 不需要克隆节点
- * 直接引用拿走
+ * @method message
+ * @function 根据内容创建聊天对话
+ * @param {boolean} type true:sender false:reciver
+ * @param {String} content
  */
-
+function message(type, content) {
+  let role = type ? "chat-sender" : "chat-reciver";
+  let messageContainer = document.createElement("div");
+  messageContainer.classList.add("chat-message", role);
+  let profilePic = document.createElement("div");
+  profilePic.classList.add("profile-pic");
+  let messageContent = document.createElement("div");
+  messageContent.classList.add("message-content");
+  messageContent.innerHTML = content;
+  let empty = document.createElement("div");
+  empty.classList.add("empty");
+  messageContainer.appendChild(profilePic);
+  messageContainer.appendChild(messageContent);
+  messageContainer.appendChild(empty);
+  chatContainer.appendChild(messageContainer);
+}
 /**
- * 发送按钮功能实现
+ * 获取焦点并且定位到最后
  */
-
+function placeCaretAtEnd(Node) {
+  Node.focus();
+  var range = document.createRange();
+  range.selectNodeContents(Node);
+  range.collapse(false);
+  var sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+}
 /**
  * tool组件弹出功能
  */
