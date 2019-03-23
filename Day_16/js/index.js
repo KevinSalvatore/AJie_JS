@@ -147,6 +147,7 @@ let inputEmojiClick = () => {
 inputWaySelectBtn.addEventListener("click", () => {
   if (inputEmoji.children[0].classList.contains("ion-md-code-working")) {
     inputEmojiClick();
+    toolsHide();
   }
   inputWaySelectBtnClick();
 });
@@ -157,7 +158,9 @@ inputEmoji.addEventListener("click", () => {
   }
   if (inputEmoji.children[0].classList.contains("ion-md-code-working")) {
     placeCaretAtEnd(chatInputBox[1]);
-    // 表情框跳出
+    toolsPop();
+  } else {
+    toolsHide();
   }
 });
 /**
@@ -220,16 +223,16 @@ const bqb = [
  */
 let borderEffect = element => {
   element.addEventListener("mousedown", () => {
-    element.style.border = "1px solid rgb(64, 79, 125)";
+    element.style.backgroundColor = "rgb(222, 222, 222)";
   });
   element.addEventListener("mouseup", () => {
-    element.style.border = "0";
+    element.style.backgroundColor = "transparent";
   });
   element.addEventListener("touchstart", () => {
-    element.style.border = "1px solid rgb(64, 79, 125)";
+    element.style.backgroundColor = "rgb(222, 222, 222)";
   });
   element.addEventListener("touchend", () => {
-    element.style.border = "0";
+    element.style.backgroundColor = "transparent";
   });
 };
 /**
@@ -247,8 +250,6 @@ let createEmojiPages = emojiObj => {
     emojiSwiperSlide.classList.add("swiper-slide");
     for (let i = 0; i < containerAmount; i++) {
       if (pointer > emojiObj.emojiAmount) break;
-      let masking = document.createElement("div");
-      masking.classList.add("masking");
       let path =
         "./svg/" +
         emojiObj.name +
@@ -257,42 +258,35 @@ let createEmojiPages = emojiObj => {
         " (" +
         pointer++ +
         ").svg";
-      let embed = document.createElement("embed");
-      embed.setAttribute("src", path);
-      embed.setAttribute("type", "image/svg+xml");
+      let img = document.createElement("img");
+      img.setAttribute("src", path);
       if (emojiObj.big) {
-        embed.classList.add("large");
+        img.classList.add("large");
       } else {
-        embed.classList.add("small");
+        img.classList.add("small");
       }
       let divContainer = document.createElement("div");
-      divContainer.appendChild(masking);
-      divContainer.appendChild(embed);
-      if (emojiObj.big) {
-        masking.addEventListener("click", () => {
-          message(false, masking.nextSibling.outerHTML);
+      divContainer.appendChild(img);
+      img.addEventListener("click", () => {
+        if (emojiObj.big) {
+          message(false, img.outerHTML);
           scrollBtnChatPage();
-        });
-      } else {
-        masking.addEventListener("click", () => {
+        } else {
           chatInputBox[1].focus();
-          insertHtmlAtCaret(masking.nextSibling.outerHTML);
-        });
-      }
+          insertHtmlAtCaret(img.outerHTML);
+        }
+      });
       let cell = document.createElement("div");
       cell.classList.add(cellType);
       cell.appendChild(divContainer);
       emojiSwiperSlide.appendChild(cell);
     }
     if (!emojiObj.big) {
-      let masking = document.createElement("div");
-      masking.classList.add("masking");
-      let embed = document.createElement("embed");
-      embed.setAttribute("src", "./svg/tool-icon/tool-icon_backspace.svg");
-      embed.setAttribute("type", "image/svg+xml");
+      let img = document.createElement("img");
+      img.setAttribute("src", "./svg/tool-icon/tool-icon_backspace.svg");
+      img.classList.add("small");
       let divContainer = document.createElement("div");
-      divContainer.appendChild(masking);
-      divContainer.appendChild(embed);
+      divContainer.appendChild(img);
       let faceCell = document.createElement("div");
       faceCell.classList.add("face-cell");
       faceCell.appendChild(divContainer);
@@ -305,15 +299,11 @@ let createEmojiPages = emojiObj => {
  * 创建表情选择Bar
  */
 let createEmojiBar = name => {
-  let maskingDiv = document.createElement("div");
-  maskingDiv.classList.add("masking");
-  let embed = document.createElement("embed");
-  embed.setAttribute("src", "./svg/tool-icon/tool-icon_" + name + ".svg");
-  embed.setAttribute("type", "image/svg+xml");
-  embed.classList.add("small");
+  let img = document.createElement("img");
+  img.setAttribute("src", "./svg/tool-icon/tool-icon_" + name + ".svg");
+  img.classList.add("small");
   let div = document.createElement("div");
-  div.appendChild(maskingDiv);
-  div.appendChild(embed);
+  div.appendChild(img);
   return div;
 };
 /**
@@ -350,9 +340,7 @@ var swiperV = new Swiper(".emoji-table", {
 /**
  * 添加表情Bar点击跳转功能
  */
-let emojiPageChooseBar = document.querySelectorAll(
-  "#emoji-page-choose .masking"
-);
+let emojiPageChooseBar = document.querySelectorAll("#emoji-page-choose > div");
 for (let i = 0; i < emojiPageChooseBar.length; i++) {
   const element = emojiPageChooseBar[i];
   element.onclick = () => {
@@ -362,8 +350,10 @@ for (let i = 0; i < emojiPageChooseBar.length; i++) {
 /**
  * 添加表情点击效果
  */
-let maskingDiv = document.querySelectorAll(".masking");
-maskingDiv.forEach(element => {
+let allEmoji = document.querySelectorAll(
+  ".face-cell > div, .emoji-cell > div,#emoji-page-choose > div"
+);
+allEmoji.forEach(element => {
   borderEffect(element);
 });
 
@@ -458,5 +448,23 @@ function placeCaretAtEnd(Node) {
   sel.addRange(range);
 }
 /**
+ * 回退功能的实现
+ */
+/**
  * tool组件弹出功能
  */
+let chatTabbar = document.querySelector("#chat-page .weui-tabbar");
+let toolHeight = 256;
+function toolsPop() {
+  panelPadding += toolHeight;
+  chatPage.style.paddingBottom = panelPadding + "px";
+  chatTabbar.style.bottom = toolHeight + "px";
+}
+/**
+ * tool组件隐藏功能
+ */
+function toolsHide() {
+  panelPadding -= toolHeight;
+  chatPage.style.paddingBottom = panelPadding + "px";
+  chatTabbar.style.bottom = 0;
+}

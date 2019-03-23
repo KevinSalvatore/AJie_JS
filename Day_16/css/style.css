@@ -218,9 +218,10 @@
   width: 60px;
   height: 60px;
 }
-.chat-input embed,
-.message-content embed {
+.chat-input img,
+.message-content img {
   vertical-align: middle;
+  padding: 0 0.2rem;
 }
 .num-tip {
   position: absolute;
@@ -306,7 +307,7 @@ ul > li {
   position: relative;
 }
 .chat-sender .message-content {
-  background-color: rgb(152, 225, 101);
+  background-color: #fff;
 }
 .chat-sender .message-content::before {
   content: "";
@@ -316,12 +317,12 @@ ul > li {
   top: 1.25rem;
   left: 0;
   transform: translate(-100%, -50%);
-  border-right: 0.5rem solid rgb(152, 225, 101);
+  border-right: 0.5rem solid #fff;
   border-top: 0.5rem solid transparent;
   border-bottom: 0.5rem solid transparent;
 }
 .chat-reciver .message-content {
-  background-color: #fff;
+  background-color: rgb(152, 225, 101);
 }
 .chat-reciver .message-content::after {
   content: "";
@@ -331,7 +332,7 @@ ul > li {
   top: 1.25rem;
   right: 0;
   transform: translate(100%, -50%);
-  border-left: 0.5rem solid #fff;
+  border-left: 0.5rem solid rgb(152, 225, 101);
   border-top: 0.5rem solid transparent;
   border-bottom: 0.5rem solid transparent;
 }
@@ -354,9 +355,8 @@ ul > li {
   min-width: 2rem;
 }
 .chat-tools {
-  position: fixed;
-  /* top: 100%; */
-  top: 10px;
+  position: absolute;
+  top: 100%;
   left: 0;
   right: 0;
   background-color: rgb(247, 247, 247);
@@ -380,17 +380,9 @@ ul > li {
   flex: 0;
   height: 3rem;
   position: relative;
-}
-.masking {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   border-radius: 5px;
-  z-index: 99;
 }
-#emoji-page-choose embed {
+#emoji-page-choose img {
   border-left: 0.5px solid rgb(222, 222, 222);
   border-right: 0.5px solid rgb(222, 222, 222);
   margin: 0.75rem 0;
@@ -446,6 +438,7 @@ ul > li {
 .face-cell > div {
   position: relative;
   padding: 0.2rem;
+  border-radius: 5px;
 }
 .emoji-cell > div {
   width: 60px;
