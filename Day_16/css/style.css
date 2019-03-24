@@ -220,7 +220,7 @@
 }
 .chat-input img,
 .message-content img {
-  vertical-align: middle;
+  vertical-align: text-bottom;
   padding: 0 0.2rem;
 }
 .num-tip {
@@ -265,6 +265,9 @@ ul > li {
   font-weight: border;
   line-height: 1;
 }
+#chat-page .weui-tab {
+  overflow: hidden;
+}
 #chat-page .weui-tab__panel {
   background-image: url(../images/chat-bg.jpg);
   background-size: cover;
@@ -299,6 +302,10 @@ ul > li {
 }
 .chat-reciver {
   flex-direction: row-reverse;
+}
+.bigEmoji {
+  padding: 0.25rem 0.5rem;
+  margin: 0 1rem;
 }
 .message-content {
   padding: 0.25rem 0.5rem;

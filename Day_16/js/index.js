@@ -157,7 +157,6 @@ inputEmoji.addEventListener("click", () => {
     inputWaySelectBtnClick();
   }
   if (inputEmoji.children[0].classList.contains("ion-md-code-working")) {
-    placeCaretAtEnd(chatInputBox[1]);
     toolsPop();
   } else {
     toolsHide();
@@ -269,7 +268,7 @@ let createEmojiPages = emojiObj => {
       divContainer.appendChild(img);
       img.addEventListener("click", () => {
         if (emojiObj.big) {
-          message(false, img.outerHTML);
+          message(true, false, img.outerHTML);
           scrollBtnChatPage();
         } else {
           chatInputBox[1].focus();
@@ -287,6 +286,9 @@ let createEmojiPages = emojiObj => {
       img.classList.add("small");
       let divContainer = document.createElement("div");
       divContainer.appendChild(img);
+      img.addEventListener("click",()=>{
+        deleteElement();
+      });
       let faceCell = document.createElement("div");
       faceCell.classList.add("face-cell");
       faceCell.appendChild(divContainer);
@@ -399,7 +401,7 @@ function changeSendBtn() {
       firstTimeAdd
     ) {
       sendToolBar.children[0].addEventListener("click", () => {
-        message(false, chatInputBox[1].innerHTML);
+        message(false, false, chatInputBox[1].innerHTML);
         scrollBtnChatPage();
         chatInputBox[1].innerHTML = null;
       });
@@ -407,7 +409,6 @@ function changeSendBtn() {
     }
   }
 }
-
 /**
  * 发送消息功能函数
  */
@@ -416,17 +417,22 @@ var chatContainer = document.querySelector(".chat-container");
 /**
  * @method message
  * @function 根据内容创建聊天对话
+ * @param {boolean} isBigEmoji
  * @param {boolean} type true:sender false:reciver
  * @param {String} content
  */
-function message(type, content) {
-  let role = type ? "chat-sender" : "chat-reciver";
+function message(isBigEmoji, type, content) {
   let messageContainer = document.createElement("div");
+  let role = type ? "chat-sender" : "chat-reciver";
   messageContainer.classList.add("chat-message", role);
   let profilePic = document.createElement("div");
   profilePic.classList.add("profile-pic");
   let messageContent = document.createElement("div");
-  messageContent.classList.add("message-content");
+  if (isBigEmoji) {
+    messageContent.classList.add("bigEmoji");
+  } else {
+    messageContent.classList.add("message-content");
+  }
   messageContent.innerHTML = content;
   let empty = document.createElement("div");
   empty.classList.add("empty");
@@ -437,6 +443,7 @@ function message(type, content) {
 }
 /**
  * 获取焦点并且定位到最后
+ * 第一次进入聊天页面使用
  */
 function placeCaretAtEnd(Node) {
   Node.focus();
@@ -450,6 +457,29 @@ function placeCaretAtEnd(Node) {
 /**
  * 回退功能的实现
  */
+function deleteElement() {
+  let sel, range;
+  sel = window.getSelection();
+  if (sel.getRangeAt && sel.rangeCount) {
+    range = sel.getRangeAt(0);
+    if (range.collapsed) {
+      //判断光标是否在第一位
+      if (range.startOffset === 0) return;
+      else {
+        //如果不在，将光标向前移动一位，document.execCommand("forwardDelete",false,null)
+        range.setStart(range.startContainer, range.startOffset-1);
+        range.collapse(true);
+        document.execCommand("forwardDelete",false,null);
+        return;
+      }
+    } else {
+      //存在拖蓝，删除选中内容
+      range.deleteContents();
+      return;
+    }
+  }
+  return;
+}
 /**
  * tool组件弹出功能
  */
