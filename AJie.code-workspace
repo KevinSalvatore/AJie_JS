@@ -5,6 +5,8 @@
 		}
 	],
 	"settings": {
-		"svg.preview.background": "transparent"
+		"svg.preview.background": "transparent",
+		"terminal.integrated.cursorStyle": "line",
+		"terminal.integrated.fontSize": 24
 	}
 }
