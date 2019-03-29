@@ -1,0 +1,10 @@
+body {
+  text-align: center;
+}
+img {
+  width: 300px;
+  margin: 50px;
+}
+.change {
+  filter: blur(1px);
+}
