@@ -1,0 +1,61 @@
+vendors = official
+
+random(min,max)
+  return floor(math(0, 'random')*(max - min + 1) + min)
+
+*
+  margin 0
+  padding 0
+
+html
+body
+  width 100vw
+  height 100vh
+  background-color #000000
+
+.ball
+  width 10px
+  height 10px
+  top 50%
+  left 50%
+  transform: translate(-50%, -50%)
+  position relative
+  transform-style: preserve-3d
+  perspective: 1000px
+
+.spot
+  width 10px
+  height 10px
+  position absolute
+  border-radius: 50%
+
+animation(n)
+  animation twinkle+n 20s linear infinite
+
+getdifference()
+  transform: rotateX(unit(random(0,360),'deg')) rotateY(unit(random(0,360),'deg')) translateZ(50px)
+  background-color rgba(random(0,255),random(0,255),random(0,255),random(0,1))
+
+for num in 1..100
+  .spot:nth-child({num})
+    $xDeg = random(0,360)
+    $yDeg = random(0,360)
+    $red = random(0,255)
+    $green = random(0,255)
+    $blue = random(0,255)
+    $alpha = random(0,1)
+    transform: rotateX(unit($xDeg,'deg')) rotateY(unit($yDeg,'deg')) translateZ(50px)
+    background-color rgba($red,$green,$blue,$alpha)
+    animation num
+    @keyframes twinkle{num}
+      20%
+        getdifference()
+      40%
+        getdifference()
+      60%
+        getdifference()
+      80%
+        getdifference()
+      100%
+        transform: rotateX(unit($xDeg,'deg')) rotateY(unit($yDeg,'deg')) translateZ(50px)
+        background-color rgba($red,$green,$blue,$alpha)
