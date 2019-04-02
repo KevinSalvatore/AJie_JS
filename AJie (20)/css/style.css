@@ -1,5 +1,5 @@
 path {
-  animation: dash 3s linear forwards;
+  animation: dash 5s linear forwards;
 }
 path:nth-child(2) {
   stroke-dasharray: 1162;

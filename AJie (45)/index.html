@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+
+    <div class="page">
+      <div class="weui-pull-to-refresh__layer">
+        <div class="weui-pull-to-refresh__arrow"></div>
+        <div class="weui-pull-to-refresh__preloader"></div>
+        <div class="down">下拉刷新</div>
+        <div class="up">释放刷新</div>
+        <div class="refresh">正在刷新</div>
+      </div>
+      <div class="list">
+        <ul class="lists">
+          <li>豆瓣电影Top20</li>
+        </ul>
+      </div>
+    </div>
+    <div class="weui-loadmore">
+      <i class="weui-loading"></i>
+      <span class="weui-loadmore__tips">正在加载</span>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
