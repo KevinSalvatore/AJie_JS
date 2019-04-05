@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  position: relative;
+}
+.stars {
+  width: 15rem;
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.star {
+  line-height: 1;
+  font-size: 2rem;
+  padding: .5rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: lightgray;
+  background-color: #fff;
+}
+.score {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10.5rem;
+  height: 3rem;
+  mix-blend-mode: lighten;
+  background-color: orange;
+}

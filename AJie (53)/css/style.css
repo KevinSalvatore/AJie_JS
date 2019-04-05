@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.container {
+  width: 30rem;
+  height: 8rem;
+  overflow: scroll;
+  border: 1px solid red;
+}
+.container > div {
+  width: 30rem;
+  height: 8rem;
+  background-color: #ffffff;
+  font-size: 5rem;
+  font-weight: bolder;
+  color: transparent;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.container :nth-child(1) {
+  -webkit-background-clip: text;
+  background-image: url(../images/scene-1.jpg);
+}
+.container :nth-child(2) {
+  background-image: url(../images/scene-0.jpg);
+}
+.container :nth-child(3) {
+  -webkit-background-clip: text;
+  background-image: url(../images/scene-2.jpg);
+}
+.container :nth-child(4) {
+  background-image: url(../images/scene-4.jpg);
+}
+.container :nth-child(5) {
+  -webkit-background-clip: text;
+  background-image: url(../images/scene-3.jpg);
+}
