@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  line-height: 1;
+}
+.wrapper {
+  height: 2rem;
+  width: 2rem;
+  position: relative;
+}
+.bgc {
+  width: 2rem;
+  height: 2rem;
+  background-color: lightcoral;
+}
+.star {
+  height: 2rem;
+  width: 2rem;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  mix-blend-mode: lighten;
+}
