@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  background-color: lightgreen;
+}
+.containers {
+  width: 15rem;
+  height: 3rem;
+  border: 1px solid red;
+  position: relative;
+}
+.css-only {
+  display: flex;
+  color: rgb(255, 172, 45);
+}
+.css-only .star {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.double-1,
+.double-2 {
+  display: flex;
+}
+.double-1 .star,
+.double-2 .star {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+.double-1 {
+  color: rgb(218, 218, 218);
+}
+.double-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 13.5rem;
+  overflow: hidden;
+  color: rgb(255, 172, 45);
+}
+.bgClip {
+  display: flex;
+  background-image: -webkit-gradient(
+    linear,
+    0 50%,
+    100% 50%,
+    from(rgb(255, 172, 45)),
+    color-stop(0.9, rgb(255, 172, 45)),
+    color-stop(0.9, rgb(218, 218, 218)),
+    to(rgb(218, 218, 218))
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.bgClip span {
+  text-align: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+}
+.mask {
+  display: flex;
+  width: 15rem;
+  height: 3rem;
+  background-image: -webkit-gradient(
+    linear,
+    0 50%,
+    100% 50%,
+    from(rgb(255, 172, 45)),
+    color-stop(0.9, rgb(255, 172, 45)),
+    color-stop(0.9, rgb(218, 218, 218)),
+    to(rgb(218, 218, 218))
+  );
+  -webkit-mask-image: url(../svg/五角星.svg);
+  -webkit-mask-size: 3rem;
+  -webkit-mask-repeat: repeat-x;
+}
+.mbmContent {
+  width: 15rem;
+  height: 3rem;
+  display: flex;
+  color: rgb(0, 0, 0);
+  background-color: #fff;
+}
+.mbmScore {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15rem;
+  height: 3rem;
+  background-image: -webkit-gradient(
+    linear,
+    0 50%,
+    100% 50%,
+    from(rgb(255, 172, 45)),
+    color-stop(0.9, rgb(255, 172, 45)),
+    color-stop(0.9, rgb(218, 218, 218)),
+    to(rgb(218, 218, 218))
+  );
+  mix-blend-mode: lighten;
+}
+.mbmContent .star {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
