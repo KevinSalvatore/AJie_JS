@@ -1,0 +1,9 @@
+.content {
+  border: 1px solid #000;
+  width: 250px;
+  text-align: center;
+}
+.text {
+  display: inline-block;
+  text-align: left;
+}

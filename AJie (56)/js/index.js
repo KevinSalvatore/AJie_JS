@@ -18,15 +18,25 @@ AJ.prototype.html = function(html) {
   return this;
 };
 
+var factory = {};
+
+factory.wrapper = function(nodeList) {
+  return new AJ(nodeList);
+};
+
 var $ = function(parameter) {
   if (typeof parameter === "function") {
     let callback = parameter;
-    document.addEventListener("DOMContentLoaded", function() {
-      callback();
-    });
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
+        callback();
+      },
+      false
+    );
   } else if (typeof parameter === "string") {
     let selector = parameter;
-    return new AJ(DOMEle(selector));
+    return factory.wrapper(DOMEle(selector));
   } else {
     return;
   }
@@ -45,10 +55,10 @@ function DOMEle(string) {
   return range;
 }
 
-$(".container .content div")
+$("#container .content div")
   .css({
     width: "200px",
     height: "200px",
-    backgroundColor: "red"
+    backgroundColor: "grey"
   })
   .html("我爱你！");
