@@ -1,0 +1,15 @@
+.ui.navbar {
+  background-color: #fff;
+}
+
+.ui.navbar .content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ui.navbar .header > img {
+  width: 98px;
+}

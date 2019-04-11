@@ -2,7 +2,7 @@ function AJ(arr) {
   this.nodeList = arr;
 }
 
-AJ.prototype.css = function(styleObj) {
+AJ.prototype.css = function (styleObj) {
   this.nodeList.forEach(node => {
     for (const key in styleObj) {
       eval("node.style." + key + " = styleObj." + key);
@@ -11,7 +11,7 @@ AJ.prototype.css = function(styleObj) {
   return this;
 };
 
-AJ.prototype.html = function(html) {
+AJ.prototype.html = function (html) {
   this.nodeList.forEach(node => {
     node.innerHTML = html;
   });
@@ -20,16 +20,16 @@ AJ.prototype.html = function(html) {
 
 var factory = {};
 
-factory.wrapper = function(nodeList) {
+factory.wrapper = function (nodeList) {
   return new AJ(nodeList);
 };
 
-var $ = function(parameter) {
+var $ = function (parameter) {
   if (typeof parameter === "function") {
     let callback = parameter;
     document.addEventListener(
       "DOMContentLoaded",
-      function() {
+      function () {
         callback();
       },
       false
