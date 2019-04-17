@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>camera</title>
+  <style>
+    .btn-container {
+      position: fixed;
+      transform: translate(-50%, 0);
+      left: 50%;
+      width: 10rem;
+      height: 2rem;
+      bottom: 10px;
+    }
+    .btn {
+      height: 100%;
+      background-color: green;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 将来自摄像头 -->
+  <video id="video" autoplay></video>
+  <canvas id="canvas"></canvas>
+  <div class="btn-container">
+    <button class="btn" id="photo">拍照</button>
+  </div>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
