@@ -1,6 +1,0 @@
-<view class="container legend-list">
-  <block wx:for="{{legends}}">
-    <view class="image-section"></view>
-    <text>{{item.name}}</text>
-  </block>
-</view>

@@ -19,11 +19,3 @@
 .usermotto {
   margin-top: 200px;
 }
-
-.freeLegent {
-  margin-top: 20px;
-}
-
-.latestBattle {
-  margin-top: 20px;
-}
