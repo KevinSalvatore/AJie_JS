@@ -1,0 +1,13 @@
+<view class="wrapper">
+  <view class="group" wx:for="{{articleList}}" wx:key="{{index}}" wx:for-item="group">
+    <view class="group-bar">
+      <view class="group-title {{ group.formateDate === '今日' ? 'on' : ''}}">{{group.formateDate}}</view>
+    </view>
+    <view class="group-content">
+      <view wx:for="{{group.articles}}" wx:for-item="item" wx:key="{{item.contentId}}" data-item="{{item}}" class="group-content-item" bindtap="showDetail">
+        <view class="group-content-item-desc ellipsis-multi-line ellipsis-line-3">{{item.title}}</view>
+        <image class="group-content-item-img" src="{{item.cover || defaultImg.coverImg}}" mode="aspectFill" />
+      </view>
+    </view>
+  </view>
+</view>
