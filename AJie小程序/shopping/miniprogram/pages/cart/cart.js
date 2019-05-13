@@ -6,7 +6,21 @@ Page({
   data: {
     hasList: false,
     carts: [],
-    selectAllStatus: true
+    selectAllStatus: true,
+    totalPrice: ""
+  },
+  getTotalPrice() {
+    let carts = this.data.carts;
+    let total = 0;
+    for (let i = 0; i < carts.length; i++) {
+      const item = carts[i];
+      if (item.selected) {
+        total += item.num * item.price;
+      }
+    }
+    this.setData({
+      totalPrice: total.toFixed(2)
+    });
   },
   selectAll() {
     let selectAllStatus = this.data.selectAllStatus;
@@ -20,6 +34,53 @@ Page({
       selectAllStatus,
       carts
     });
+  },
+  minusCount(e) {
+    const index = e.target.dataset.index;
+    let carts = this.data.carts;
+    let num = carts[index].num;
+    if (num <= 1) return;
+    num -= 1;
+    carts[index].num = num;
+    this.setData({
+      carts
+    });
+    this.getTotalPrice();
+  },
+  addCount(e) {
+    const index = e.target.dataset.index;
+    let carts = this.data.carts;
+    let num = carts[index].num;
+    num += 1;
+    carts[index].num = num;
+    this.setData({
+      carts
+    });
+    this.getTotalPrice();
+  },
+  deleteList(e) {
+    const index = e.target.dataset.index;
+    let carts = this.data.carts;
+    carts.splice(index, 1);
+    this.setData({
+      carts
+    });
+    if (carts.length === 0) {
+      this.setData({
+        hasList: false
+      });
+    } else {
+      this.getTotalPrice();
+    }
+  },
+  selectList(e) {
+    const index = e.target.dataset.index;
+    let carts = this.data.carts;
+    carts[index].selected = !carts[index].selected;
+    this.setData({
+      carts
+    });
+    this.getTotalPrice();
   },
   /**
    * 生命周期函数--监听页面加载
@@ -57,6 +118,7 @@ Page({
           }
         ]
       });
+      this.getTotalPrice();
     }, 1000);
   },
 
