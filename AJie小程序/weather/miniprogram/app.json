@@ -1,0 +1,13 @@
+{
+  "pages": ["pages/index/index", "pages/diary/diary"],
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "networkTimeout": {
+    "request": 30000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  },
+  "sitemapLocation": "sitemap.json"
+}
