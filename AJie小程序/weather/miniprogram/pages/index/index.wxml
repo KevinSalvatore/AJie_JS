@@ -3,12 +3,12 @@
   <view class="navigator" bind:tap="goDiary">
     <icon type="edit" />
   </view>
-</view>
-<view class="container" id="canvas-wrapper" style="padding-top: {{}}">
-  <view class="now">
-    <view class="location" bind:tap="chooseLocation">
-      <icon type="dingwei" />
-      <text>{{address}}</text>
+  <view class="container" id="canvas-wrapper" style="padding-top: {{paddingTop}}">
+    <view class="now">
+      <view class="location" bind:tap="chooseLocation">
+        <icon type="dingwei" />
+        <text>{{address}}</text>
+      </view>
     </view>
   </view>
 </view>
