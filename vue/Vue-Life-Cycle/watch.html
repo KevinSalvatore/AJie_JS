@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="temperature">
+      {{temperature}}
+    </div>
+    <p class="advice">
+      {{advice}}
+    </p>
+    <div class="btn">
+      <button @click="add">add</button>
+      <button @click="reduce">reduce</button>
+    </div>
+  </div>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          temperature: 29,
+          advice: "T-Short"
+        }
+      },
+      methods: {
+        add() {
+          this.temperature += 5
+        },
+        reduce() {
+          this.temperature -= 5
+        }
+      },
+      watch: {
+        temperature(newVal, oldVal) {
+          // console.log(newVal, oldVal)
+          if (newVal >= 26) {
+            this.advice = "T-Short"
+          } else {
+            this.advice = "Coat"
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

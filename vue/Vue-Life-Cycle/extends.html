@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="msg">
+      <%message%>
+    </div>
+    <div class="btn">
+      <button @click="add">add</button>
+    </div>
+  </div>
+  <script>
+    var ext = {
+      created() {
+        console.log("1111")
+      },
+      methods: {
+        add() {
+          console.log("2222")
+        }
+      }
+    }
+    var app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: "Hi!"
+        }
+      },
+      created() {
+        console.log("****")
+      },
+      methods: {
+        add() {
+          console.log("&&&&")
+        }
+      },
+      extends: ext,
+      delimiters: ["<%","%>"]
+    })
+  </script>
+</body>
+
+</html>
