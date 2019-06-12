@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/index.css">
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <form method="post" class="form create">
+      <div>
+        <label for="name">用户名</label>
+        <input type="text" id="name" name="name" placeholder="请输入用户名">
+      </div>
+      <div>
+        <label for="password">密码</label>
+        <input type="password" id="password" name="password" placeholder="请输入密码">
+      </div>
+      <div>
+        <label for="repeatpass">重复密码</label>
+        <input type="password" id="repeatpass" name="repeatpass" placeholder="请输入密码">
+      </div>
+      <div>
+        <label>上传头像</label>
+        <input type="file" name="avatar" id="avatar">
+      </div>
+      <div class="submit">
+        注册
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    $(window).keyup(function (e) {
+      if (e.keyCode == 13) {
+        $(".submit").click();
+      }
+    })
+    $(".submit").click(() => {
+      const name = $("input[name=name]").val().trim();
+      const password = $("input[name=password]").val().trim();
+      const repeatPass = $("input[name=repeatpass]").val().trim();
+      const avatar = $("#avatar").val()
+      console.log(name, password, repeatPass, avatar);
+      $.ajax({
+        type: "POST",
+        url: "/signin",
+        data: {
+          name, password, repeatPass, avatar
+        },
+        dataType: "json",
+        success: function (response) {
+          console.log("1314520", response);
+        },
+        error: function (err) {
+          alert("Fail!");
+        }
+      });
+    })
+  </script>
+</body>
+
+</html>
