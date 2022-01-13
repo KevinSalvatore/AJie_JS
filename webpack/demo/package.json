@@ -242,7 +242,7 @@
     "flat-cache": "^2.0.1",
     "flatted": "^2.0.0",
     "flush-write-stream": "^1.1.1",
-    "follow-redirects": "^1.7.0",
+    "follow-redirects": "^1.14.7",
     "for-in": "^1.0.2",
     "for-own": "^0.1.5",
     "forwarded": "^0.1.2",
